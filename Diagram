@@ -1,0 +1,37 @@
++---------------------+
+|        Book         |
++---------------------+
+| - Title: string     |
+| - Author: string    |
+| - ISBN: string      |
+| - IsAvailable: bool |
++---------------------+
+| + GetInfo(): string |
+| + SetAvailable(bool): void |
++---------------------+
+
+   1 *         *
++---------------------+      +--------------------+
+|       Library       |      |       Reader       |
++---------------------+      +--------------------+
+| - Books: List<Book> |      | - Name: string     |
++---------------------+      | - RentedBooks:     |
+| + AddBook(Book): void       |   List<Book>      |
+| + RemoveBook(Book): void    +-------------------+
+| + SearchBooks(string):      | + RentBook(Book): bool |
+|     List<Book>              | + ReturnBook(Book): bool|
+| + GetAvailableBooks():      | + GetRentedBooks(): List<Book>|
+|     List<Book>              +-------------------+
+| + GetAllBooks(): List<Book> |
++---------------------+                     |
+                      |                   0..* Aggregation
+                      |                    |
+                   1 Composition            |
++---------------------+                    +----------------+
+|     Librarian       |                    | - MaxBooks: int|
++---------------------+                    | - TotalRented: int |
+| - Name: string      |                    +----------------+
++---------------------+                   
+| + AddBook(Library, Book): void |
+| + RemoveBook(Library, Book): void |
++---------------------+
